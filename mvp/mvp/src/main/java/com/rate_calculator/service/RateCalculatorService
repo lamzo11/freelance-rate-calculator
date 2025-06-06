@@ -1,0 +1,46 @@
+package com.rate_calculator.service;
+
+import org.springframework.stereotype.Service;
+import com.rate_calculator.models.RateCalculatorInput;
+import com.rate_calculator.models.RateCalculatorResult;
+
+@Service
+
+public class RateCalculatorService{
+
+    private static final int WORKING_DAYS_PER_YEAR = 260;
+    private static final double BUFFER_PERCENTAGE = 0.2;
+
+    public RateCalculatorResult calculateRate(RateCalculatorInput input){
+        double yearlyExpenses = calculateYearlyExpenses(input);
+
+        /*buffer for unexpected expenses*/
+        double totalRequired = yearlyExpenses * (1 + BUFFER_PERCENTAGE);
+
+        int availableWorkingDays = WORKING_DAYS_PER_YEAR - input.getVacationDays() - input.getSickDays();
+
+        double dailyRate = totalRequired / availableWorkingDays;
+
+        double monthlyRate = dailyRate * 21;
+
+        return new RateCalculatorResult(
+            dailyRate,
+            monthlyRate,
+            totalRequired,
+            totalRequired / 12
+
+        );
+    }
+
+    private double calculateYearlyExpenses(RateCalculatorInput input){
+        double monthlyExpenses = input.getMonthlyRent()+
+                                input.getMonthlyInsurance()+
+                                input.getMonthlyTax()+
+                                input.getMonthlyTransport()+
+                                input.getOtherMonthlyExpenses();
+
+        double yearlyExpenses = monthlyExpenses * 12;
+
+        return yearlyExpenses * (1+ input.getDesiredSavingsPercentage());
+    }
+}

@@ -1,0 +1,43 @@
+package rate_calculator.mvp;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
+import org.springframework.test.web.servlet.MockMvc;
+
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@SpringBootTest
+@AutoConfigureMockMvc
+public class RateCalculatorControllerTest {
+
+    @Autowired
+    private MockMvc mockMvc;
+
+    @Test
+    public void testCalculateRate() throws Exception {
+        String testInput = """
+            {
+                "monthlyRent": 1000,
+                "monthlyInsurance": 200,
+                "monthlyTax": 500,
+                "monthlyTransport": 100,
+                "otherMonthlyExpenses": 300,
+                "vacationDays": 25,
+                "sickDays": 10,
+                "desiredSavingsPercentage": 0.2
+            }
+            """;
+
+        mockMvc.perform(post("/api/calculate/rate")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(testInput))
+                .andExpect(status().isOk())
+                .andDo(result -> {
+                    System.out.println("Response: " + result.getResponse().getContentAsString());
+                });
+    }
+}

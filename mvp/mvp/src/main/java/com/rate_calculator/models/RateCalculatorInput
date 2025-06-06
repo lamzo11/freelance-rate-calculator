@@ -1,0 +1,42 @@
+package com.rate_calculator.models;
+
+public class RateCalculatorInput {
+    private double monthlyRent;
+    private double monthlyInsurance;
+    private double monthlyTax;
+    private double monthlyTransport;
+    private double otherMonthlyExpenses;
+    private int vacationDays;
+    private int sickDays;
+    private double desiredSavingsPercentage;
+
+    // Getters and setters
+    // Default constructor and parameterized constructor
+        public RateCalculatorInput() {}
+
+    // Getters and Setters
+    public double getMonthlyRent() { return monthlyRent; }
+    public void setMonthlyRent(double monthlyRent) { this.monthlyRent = monthlyRent; }
+
+    public double getMonthlyInsurance() { return monthlyInsurance; }
+    public void setMonthlyInsurance(double monthlyInsurance) { this.monthlyInsurance = monthlyInsurance; }
+
+    public double getMonthlyTax() { return monthlyTax; }
+    public void setMonthlyTax(double monthlyTax) { this.monthlyTax = monthlyTax; }
+
+    public double getMonthlyTransport() { return monthlyTransport; }
+    public void setMonthlyTransport(double monthlyTransport) { this.monthlyTransport = monthlyTransport; }
+
+    public double getOtherMonthlyExpenses() { return otherMonthlyExpenses; }
+    public void setOtherMonthlyExpenses(double otherMonthlyExpenses) { this.otherMonthlyExpenses = otherMonthlyExpenses; }
+
+    public int getVacationDays() { return vacationDays; }
+    public void setVacationDays(int vacationDays) { this.vacationDays = vacationDays; }
+
+    public int getSickDays() { return sickDays; }
+    public void setSickDays(int sickDays) { this.sickDays = sickDays; }
+
+    public double getDesiredSavingsPercentage() { return desiredSavingsPercentage; }
+    public void setDesiredSavingsPercentage(double desiredSavingsPercentage) { this.desiredSavingsPercentage = desiredSavingsPercentage; }
+
+}
