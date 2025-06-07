@@ -1,13 +1,21 @@
 package com.rate_calculator.models;
 
 public class RateCalculatorInput {
+    @JsonProperty
     private double monthlyRent;
+    @JsonProperty
     private double monthlyInsurance;
+    @JsonProperty
     private double monthlyTax;
+    @JsonProperty
     private double monthlyTransport;
+    @JsonProperty
     private double otherMonthlyExpenses;
+    @JsonProperty
     private int vacationDays;
+    @JsonProperty
     private int sickDays;
+    @JsonProperty
     private double desiredSavingsPercentage;
 
     // Getters and setters
@@ -39,4 +47,17 @@ public class RateCalculatorInput {
     public double getDesiredSavingsPercentage() { return desiredSavingsPercentage; }
     public void setDesiredSavingsPercentage(double desiredSavingsPercentage) { this.desiredSavingsPercentage = desiredSavingsPercentage; }
 
+    @Override
+    public String toString() {
+    return "RateCalculatorInput{" +
+            "monthlyRent=" + monthlyRent +
+            ", monthlyInsurance=" + monthlyInsurance +
+            ", monthlyTax=" + monthlyTax +
+            ", monthlyTransport=" + monthlyTransport +
+            ", otherMonthlyExpenses=" + otherMonthlyExpenses +
+            ", vacationDays=" + vacationDays +
+            ", sickDays=" + sickDays +
+            ", desiredSavingsPercentage=" + desiredSavingsPercentage +
+            '}';
+}
 }

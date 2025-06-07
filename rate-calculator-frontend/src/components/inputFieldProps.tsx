@@ -24,10 +24,11 @@ export const InputField: React.FC<InputFieldProps> = ({
       type="number"
       id={name}
       name={name}
-      value={value}
+      value={value || ''}
       onChange={onChange}
       min={min}
       max={max}
+      placeholder="0"
     />
   </div>
 );

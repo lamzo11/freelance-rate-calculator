@@ -1,12 +1,13 @@
 package com.rate_calculator.controller;
 
 import org.springframework.web.bind.annotation.*;
-import rate_calculator.mvp.model.RateCalculatorInput;
-import rate_calculator.mvp.model.RateCalculatorResult;
-import rate_calculator.mvp.service.RateCalculatorService;
+import com.rate_calculator.models.RateCalculatorInput;
+import com.rate_calculator.models.RateCalculatorResult;
+import com.rate_calculator.service.RateCalculatorService;
 
 @RestController
 @RequestMapping("/api/calculate")
+@CrossOrigin(origins = "http://localhost:5173")
 public class RateCalculatorController {
     
     private final RateCalculatorService calculatorService;
@@ -17,6 +18,7 @@ public class RateCalculatorController {
 
     @PostMapping("/rate")
     public RateCalculatorResult calculateRate(@RequestBody RateCalculatorInput input) {
+        System.out.println("Received request: " + input);
         return calculatorService.calculateRate(input);
     }
 }
