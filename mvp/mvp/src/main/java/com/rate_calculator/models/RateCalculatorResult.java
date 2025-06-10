@@ -32,7 +32,7 @@ public class RateCalculatorResult {
         this.recommendedMonthlyRate = recommendedMonthlyRate;
     }
 
-    public double getMinimunYearlySalary(){
+    public double getMinimumYearlySalary(){
         return minimumYearlySalary;
     }
 

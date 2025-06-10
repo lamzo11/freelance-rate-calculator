@@ -1,4 +1,5 @@
 package com.rate_calculator.models;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class RateCalculatorInput {
     @JsonProperty
